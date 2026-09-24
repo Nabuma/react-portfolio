@@ -9,7 +9,7 @@ const stackGroups = [
   { label: 'Méthodes & Outils', skills: ['Design Systems', 'RGAA / Accessibility (a11y)', 'Web Vitals', 'Git', 'Figma', 'WordPress'] },
 ];
 
-function Project({ title, categorie, role, description, link }: ProjectData) {
+function Project({ title, categorie, role, description, link, visual }: ProjectData) {
   return (
     <article className="border-b border-line py-10 sm:py-12">
       <div className="grid items-start gap-6 sm:grid-cols-[minmax(16rem,1fr)_minmax(0,1.4fr)_auto] sm:gap-10">
@@ -17,6 +17,9 @@ function Project({ title, categorie, role, description, link }: ProjectData) {
           <h3 className="font-heading text-[2.8rem] leading-none font-medium">{title}</h3>
           <p className="mt-2 text-sm leading-5 text-muted">{categorie}</p>
           <p className="mt-1 text-sm leading-5 text-muted">{role}</p>
+          <figure className="mt-5 aspect-video w-full max-w-[16rem] overflow-hidden border border-line bg-white p-1 sm:mt-6">
+            <img src={visual} alt={`Aperçu du projet ${title}`} className="h-full w-full object-contain grayscale contrast-125" loading="lazy" decoding="async" />
+          </figure>
         </div>
         <div className="max-w-[68ch]">
           <div className="text-[1.0625rem] leading-7" dangerouslySetInnerHTML={{ __html: description }} />
@@ -26,6 +29,62 @@ function Project({ title, categorie, role, description, link }: ProjectData) {
     </article>
   );
 }
+
+export const SeLogerVisual = () => (
+  <div className="w-full h-48 bg-slate-900 rounded-xl p-4 flex flex-col justify-between border border-slate-800 font-sans">
+    <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+      <div className="flex items-center space-x-2">
+        <span className="w-3 h-3 rounded-full bg-amber-600"></span>
+        <span className="text-xs font-bold text-slate-200">Belles Demeures</span>
+      </div>
+      <span className="text-[10px] font-mono bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded border border-purple-500/20">
+        CRO & GeoGIS
+      </span>
+    </div>
+    <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700/40 my-auto space-y-2">
+      <div className="flex justify-between items-center">
+        <span className="text-xs font-medium text-slate-300">Cartographie Interactive</span>
+        <span className="text-[10px] bg-slate-700 px-2 py-0.5 rounded text-sky-300 font-mono">Leaflet</span>
+      </div>
+      <div className="flex justify-between items-center">
+        <span className="text-xs font-medium text-slate-300">Optimisation Conversion (CRO)</span>
+        <span className="text-[10px] text-emerald-400 font-mono">+ Lead Gen</span>
+      </div>
+    </div>
+    <div className="text-[10px] text-slate-500 pt-2 border-t border-slate-800 flex justify-between">
+      <span>UI/UX High-End</span>
+      <span>Performances Médias HD</span>
+    </div>
+  </div>
+);
+
+export const AcadomiaVisual = () => (
+  <div className="w-full h-48 bg-slate-900 rounded-xl p-4 flex flex-col justify-between border border-slate-800 font-sans">
+    <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+      <div className="flex items-center space-x-2">
+        <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
+        <span className="text-xs font-bold text-slate-200">Acadomia</span>
+      </div>
+      <span className="text-[10px] font-mono bg-sky-500/10 text-sky-400 px-2 py-0.5 rounded border border-sky-500/20">
+        Lead Generation
+      </span>
+    </div>
+    <div className="space-y-2 my-auto">
+      <div className="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700/50 flex justify-between items-center">
+        <span className="text-xs font-medium text-slate-200">Parcours Choix Multiples</span>
+        <span className="text-[10px] text-amber-400 font-mono">Branching UX</span>
+      </div>
+      <div className="flex justify-between text-[10px] text-slate-400 px-1">
+        <span>Maintenance WordPress</span>
+        <span>Landing Pages Sur-mesure</span>
+      </div>
+    </div>
+    <div className="text-[10px] text-slate-500 pt-2 border-t border-slate-800 flex justify-between">
+      <span>Conversion Client</span>
+      <span>Arborescences Dynamiques</span>
+    </div>
+  </div>
+);
 
 function App() {
   return (

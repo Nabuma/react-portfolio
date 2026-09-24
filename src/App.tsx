@@ -7,7 +7,7 @@ type ProjectData = (typeof projects)[number];
 function Project({ title, categorie, role, description, link, visual, visualWidth, visualHeight, locale, previewLabel, viewProjectLabel, opensInNewTab }: ProjectData & { locale: Locale; previewLabel: string; viewProjectLabel: string; opensInNewTab: string }) {
   return (
     <article className="border-b border-line py-10 sm:py-12">
-      <div className="grid items-start gap-6 sm:grid-cols-[minmax(16rem,1fr)_minmax(0,1.4fr)_auto] sm:gap-10">
+      <div className="grid items-start gap-6 lg:grid-cols-[minmax(16rem,1fr)_minmax(0,1.4fr)_auto] lg:gap-10">
         <div>
           <h3 className="font-heading text-[2.4rem] leading-none font-medium sm:text-[2.8rem]">{title}</h3>
           <p className="mt-2 text-sm leading-5 text-muted">{categorie[locale]}</p>
@@ -31,31 +31,35 @@ function App() {
   return (
     <div className="mx-auto w-[min(112rem,calc(100%-3.2rem))] sm:w-[min(112rem,calc(100%-4.8rem))]">
       <a className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-3 focus:text-paper" href="#projects">{t.skipToProjects}</a>
-      <header className="flex flex-wrap items-baseline gap-x-3 gap-y-2 border-b border-line py-8 sm:flex-nowrap sm:gap-4 sm:pb-6">
-        <h1 className="font-heading text-[2.4rem] leading-none font-bold uppercase sm:text-[2.8rem]">Arnaud CHAPPLAIN</h1>
-        <p className="text-[1.5rem] leading-none text-muted">{t.seniorFrontendDeveloper}</p>
-        <p className="flex items-center gap-2 text-sm leading-5 text-muted whitespace-nowrap" role="status">
-          <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
-          {t.openToOpportunities}
-        </p>
-        <nav className="basis-full sm:ml-auto sm:basis-auto" aria-label={t.socialAndContact}>
-          <ul className="flex gap-7 pt-4 font-heading text-sm font-bold tracking-[0.04em] uppercase sm:pt-0">
-          <li><a aria-label={`LinkedIn ${t.opensInNewTab}`} className="transition-colors hover:text-muted focus-visible:text-muted" href="https://www.linkedin.com/in/arnaud-chapplain-6a04581a0/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a aria-label={`GitHub ${t.opensInNewTab}`} className="transition-colors hover:text-muted focus-visible:text-muted" href="https://github.com/Nabuma" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a className="transition-colors hover:text-muted focus-visible:text-muted" href="mailto:arnaud.chapplain@gmail.com">Mail</a></li>
-          </ul>
-        </nav>
-        <div className="basis-full sm:basis-auto" role="group" aria-label={t.switchLanguage}>
-          {(['fr', 'en', 'ko'] as Locale[]).map((language) => (
-            <button className={`mr-3 cursor-pointer text-sm font-bold uppercase ${locale === language ? 'underline' : 'text-muted'}`} type="button" key={language} onClick={() => setLocale(language)} aria-pressed={locale === language}>
-              {translations[language].languageName}
-            </button>
-          ))}
+      <header className="flex flex-wrap items-baseline gap-x-3 gap-y-2 border-b border-line py-8 xl:flex-nowrap xl:gap-4 xl:pb-6">
+        <div>
+          <h1 className="font-heading text-[2.4rem] leading-none font-bold uppercase sm:text-[2.8rem]">Arnaud CHAPPLAIN</h1>
+          <p className="mt-2 text-[1.5rem] leading-none text-muted">{t.seniorFrontendDeveloper}</p>
+          <p className="mt-3 flex items-center gap-2 text-sm leading-5 text-muted whitespace-nowrap" role="status">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
+            {t.openToOpportunities}
+          </p>
+        </div>
+        <div className="basis-full md:ml-auto md:flex md:basis-auto md:flex-col md:items-end md:gap-3 xl:flex-row xl:items-baseline">
+          <nav aria-label={t.socialAndContact}>
+            <ul className="flex gap-7 pt-4 font-heading text-sm font-bold tracking-[0.04em] uppercase md:pt-0">
+            <li><a aria-label={`LinkedIn ${t.opensInNewTab}`} className="transition-colors hover:text-muted focus-visible:text-muted" href="https://www.linkedin.com/in/arnaud-chapplain-6a04581a0/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a aria-label={`GitHub ${t.opensInNewTab}`} className="transition-colors hover:text-muted focus-visible:text-muted" href="https://github.com/Nabuma" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a className="transition-colors hover:text-muted focus-visible:text-muted" href="mailto:arnaud.chapplain@gmail.com">Mail</a></li>
+            </ul>
+          </nav>
+          <div role="group" aria-label={t.switchLanguage}>
+            {(['fr', 'en', 'ko'] as Locale[]).map((language) => (
+              <button className={`mr-3 cursor-pointer text-sm font-bold uppercase ${locale === language ? 'underline' : 'text-muted'}`} type="button" key={language} onClick={() => setLocale(language)} aria-pressed={locale === language}>
+                {translations[language].languageName}
+              </button>
+            ))}
+          </div>
         </div>
       </header>
       <main id="main-content">
-      <section className="max-w-[68rem] py-32 sm:py-48" aria-labelledby="intro-title">
-        <h2 id="intro-title" className="font-heading text-[3.4rem] leading-[0.95] font-normal sm:text-[5rem] lg:text-[7.2rem]">{t.introTitle}</h2>
+      <section className="max-w-[68rem] py-24 sm:py-32" aria-labelledby="intro-title">
+        <h2 id="intro-title" className="font-heading text-[2.8rem] leading-[0.98] font-normal sm:text-[4.25rem] lg:text-[6rem]">{t.introTitle}</h2>
         <p className="mt-7 max-w-[56rem] text-xl">{t.introDescription}</p>
       </section>
       <section id="projects" tabIndex={-1} className="border-t border-line" aria-labelledby="projects-title">

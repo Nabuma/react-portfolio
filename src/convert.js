@@ -17,15 +17,14 @@ const images = [
 const convertImages = async () => {
   for (const image of images) {
     const sourcePath = path.join(imagesDirectory, `${image.name}.webp`);
-    const outputPath = path.join(imagesDirectory, `${image.name}-small.webp`);
     const temporaryPath = path.join(imagesDirectory, `${image.name}.optimized.webp`);
     await sharp(sourcePath)
       .resize({ width: image.width, fit: 'inside' })
       .webp({ quality: 70 })
       .toFile(temporaryPath);
-    await fs.rm(outputPath, { force: true });
-    await fs.rename(temporaryPath, outputPath);
-    console.log(`Optimized ${image.name}-small.webp`);
+    await fs.rm(sourcePath);
+    await fs.rename(temporaryPath, sourcePath);
+    console.log(`Optimized ${image.name}.webp`);
   }
 };
 

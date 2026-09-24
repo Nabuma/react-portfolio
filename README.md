@@ -97,7 +97,7 @@ Project translations live in `src/data/projects.json`, and expertise translation
 
 ## WebP image optimization
 
-Source images are kept in `public/images`. The optimization script reads the configured source WebP files and creates smaller variants at 70% quality:
+Source images are kept in `public/images`. The optimization script reads the configured source WebP files and optimizes them in place at 70% quality:
 
 ```bash
 npm run images:convert
@@ -117,7 +117,7 @@ The script is defined in `src/convert.js` and currently processes:
 - `belles-demeures.webp`
 - `acadomia.webp`
 
-Each command produces a corresponding `*-small.webp` file in `public/images`. If a new image is added, register its filename and target width in the `images` array in `src/convert.js`.
+Each command replaces the existing image with an optimized file using the same filename. A temporary `.optimized.webp` file is used during processing and is renamed back to the original filename after conversion. If a new image is added, register its filename and target width in the `images` array in `src/convert.js`.
 
 ## Code quality commands
 

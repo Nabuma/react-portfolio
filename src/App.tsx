@@ -50,8 +50,8 @@ function App() {
           </nav>
           <div role="group" aria-label={t.switchLanguage}>
             {(['fr', 'en', 'ko'] as Locale[]).map((language) => (
-              <button className={`mr-3 cursor-pointer text-sm font-bold uppercase ${locale === language ? 'underline' : 'text-muted'}`} type="button" key={language} onClick={() => setLocale(language)} aria-pressed={locale === language}>
-                {translations[language].languageName}
+              <button className={`mr-3 cursor-pointer text-lg leading-none ${locale === language ? 'opacity-100' : 'opacity-50'}`} type="button" key={language} onClick={() => setLocale(language)} aria-label={translations[language].languageName} title={translations[language].languageName} aria-pressed={locale === language}>
+                {language === 'fr' ? '🇫🇷' : language === 'en' ? '🇬🇧' : '🇰🇷'}
               </button>
             ))}
           </div>

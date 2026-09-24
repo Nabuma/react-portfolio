@@ -1,75 +1,159 @@
-# React + TypeScript + Vite
+# Arnaud Chapplain - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio for Arnaud Chapplain, senior front-end developer. The site presents selected projects, expertise in web performance and accessibility, and contact links.
 
-Currently, two official plugins are available:
+It is built as a small, static React application with Vite and TypeScript. The interface is French by default and can be switched between French, English, and Korean.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Highlights
 
-## React Compiler
+- French default language with English and Korean translations
+- Language preference persisted in `localStorage`
+- Semantic HTML and keyboard-accessible navigation
+- Responsive layout for mobile and desktop
+- Project and expertise content stored in JSON data files
+- WebP project imagery with an optimization script powered by Sharp
+- Performance-focused implementation targeting a Lighthouse score of 100
+- ESLint and Stylelint checks
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the ESLint configuration
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS 4
+- Sharp for WebP image optimization
+- ESLint and Stylelint
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Requirements
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 20 or newer recommended
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+On Windows PowerShell, use `npm.cmd` if the PowerShell execution policy blocks `npm.ps1`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Development
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Start the Vite development server:
 
+```bash
+npm run dev
 ```
+
+Then open the local URL shown in the terminal, usually `http://localhost:5173`.
+
+## Production build
+
+Create a type-checked production build:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+The Lighthouse score should be measured against the preview or deployed production site, not the Vite development server.
+
+## Lighthouse 100 target
+
+The portfolio is designed to target 100 in Lighthouse Performance, Accessibility, Best Practices, and SEO. The main practices supporting that target are:
+
+- lightweight static rendering through Vite
+- responsive images with explicit dimensions to reduce layout shift
+- lazy loading for project images below the first viewport
+- WebP assets and optimized image variants
+- semantic landmarks, headings, focus states, and accessible labels
+- minimal runtime dependencies and no unnecessary network requests
+
+To check the result:
+
+1. Run `npm run build`.
+2. Run `npm run preview`.
+3. Open the preview URL in Chrome.
+4. Open DevTools, select **Lighthouse**, choose the required categories and mobile or desktop mode, then run the audit.
+
+Lighthouse results can vary with browser version, device emulation, extensions, network conditions, and hosting configuration. A score of 100 is therefore a validation target for the deployed build, not a permanent guarantee.
+
+## Translations
+
+Translations are implemented in `src/i18n.ts`.
+
+- `fr` is the default locale.
+- `en` provides the English interface.
+- `ko` provides the Korean interface.
+- The selected locale is stored under the `locale` key in `localStorage`.
+- The document language is updated with the active locale for assistive technologies and browser language handling.
+
+Project translations live in `src/data/projects.json`, and expertise translations live in `src/data/expertiseAreas.json`. Each translatable value has `fr`, `en`, and `ko` fields. Technology and tool names intentionally remain in their standard English form.
+
+## WebP image optimization
+
+Source images are kept in `public/images`. The optimization script reads the configured source WebP files and creates smaller variants at 70% quality:
+
+```bash
+npm run images:convert
+```
+
+On Windows PowerShell:
+
+```powershell
+npm.cmd run images:convert
+```
+
+The script is defined in `src/convert.js` and currently processes:
+
+- `darty.webp`
+- `le-monde.webp`
+- `gouv.webp`
+- `belles-demeures.webp`
+- `acadomia.webp`
+
+Each command produces a corresponding `*-small.webp` file in `public/images`. If a new image is added, register its filename and target width in the `images` array in `src/convert.js`.
+
+## Code quality commands
+
+```bash
+npm run lint
+npm run lint:css
+npm run format:css
+```
+
+`lint` checks JavaScript and TypeScript. `lint:css` checks CSS ordering and style rules. `format:css` applies the configured Stylelint fixes.
+
+## Project structure
+
+```text
+src/
+  App.tsx                 Main page and language-aware UI
+  i18n.ts                 Locale state and interface translations
+  data/
+    projects.json         Project content and translations
+    expertiseAreas.json   Expertise content and translations
+  pages/                  Page-level components
+  convert.js              WebP optimization script
+  index.css               Global styles and Tailwind entry point
+  variables.css           Design tokens
+  reset.css               Base reset styles
+public/images/            Project imagery and optimized WebP files
+```
+
+## Deployment
+
+The project produces a static `dist` directory and can be deployed to any static hosting provider, including GitHub Pages, Netlify, Vercel, Cloudflare Pages, or a traditional web server.
+
+For deployment, run:
+
+```bash
+npm run build
+```
+
+Publish the generated `dist` directory. Configure the host to serve `index.html` for the root path and make sure the final site is tested with Lighthouse after deployment.

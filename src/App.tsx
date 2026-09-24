@@ -17,8 +17,8 @@ function Project({ title, categorie, role, description, link, visual }: ProjectD
           <h3 className="font-heading text-[2.8rem] leading-none font-medium">{title}</h3>
           <p className="mt-2 text-sm leading-5 text-muted">{categorie}</p>
           <p className="mt-1 text-sm leading-5 text-muted">{role}</p>
-          <figure className="mt-5 aspect-video w-full max-w-[16rem] overflow-hidden border border-line bg-white p-1 sm:mt-6">
-            <img src={visual} alt={`Aperçu du projet ${title}`} className="h-full w-full object-contain grayscale contrast-125" loading="lazy" decoding="async" />
+          <figure className="mt-5 w-full max-w-full overflow-hidden border border-line bg-white p-1 sm:mt-6 sm:max-w-[16rem]">
+            <img src={visual} alt={`Aperçu du projet ${title}`} className="block h-auto max-w-full grayscale contrast-125" loading="lazy" decoding="async" />
           </figure>
         </div>
         <div className="max-w-[68ch]">

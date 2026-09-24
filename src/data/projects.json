@@ -5,7 +5,9 @@
     "role": "Développeur Front-end, web performance, accessibilité, mentor technique, Design Systems",
     "description": "<p><strong>Refonte globale et modernisation technique de Darty.com.</strong></p><p>Refonte intégrale du funnel d'achat (Home, Search, Listing, Fiche Produit) alliée à une migration technique lourde (décommissionnement de jQuery vers du JavaScript ES6+ pur) pour maximiser les Web Vitals (Top 10 e-commerce mondial). Conception et intégration du Design System de la marque (Figma vers FreeMarker) et mise en conformité stricte aux normes d'accessibilité RGAA.</p>",
     "link": "https://www.darty.com/",
-    "visual": "./images/darty.webp"
+    "visual": "./images/darty.webp",
+    "visualWidth": 800,
+    "visualHeight": 450
   },
   {
     "title": "Service Public",
@@ -13,7 +15,9 @@
     "role": "Développeur Front-end, accessibilité, mentor technique",
     "description": "<p><strong>Modernisation et mise en accessibilité RGAA du formulaire de donation (Impots.gouv.fr).</strong></p><p>Prise en charge d'un projet legacy délaissé depuis 3 ans (absence de code front-end structuré et de design). Refonte UI/UX en synergie avec le nouveau Design System de l'État, mise en conformité RGAA complète du formulaire, et acculturation des équipes back-end au développement basé sur les composants. Rôle transverse d'expert accessibilité et de mentor technique.</p>",
     "link": "https://www.impots.gouv.fr/particulier/je-fais-une-donation",
-    "visual": "./images/gouv.webp"
+    "visual": "./images/gouv.webp",
+    "visualWidth": 600,
+    "visualHeight": 544
   },
   {
     "title": "Le Monde",
@@ -21,7 +25,9 @@
     "role": "Développeur Front-end",
     "description": "<p><strong>Optimisation et refonte UI/UX de LeMonde.fr (Média à très fort trafic).</strong></p><p>Développement senior axé sur la performance, la monétisation et la refonte des éléments critiques du site (Header et modules de contenu). Ma mission a consisté à intégrer et optimiser les formats publicitaires et les appels à l'abonnement (Paywall), tout en effectuant un travail de fond sur le débogage et l'optimisation du code front-end pour garantir une expérience utilisateur fluide et rapide.</p>",
     "link": "https://www.lemonde.fr/",
-    "visual": "./images/le-monde.webp"
+    "visual": "./images/le-monde.webp",
+    "visualWidth": 800,
+    "visualHeight": 800
   },
   {
     "title": "Groupe SeLoger",
@@ -29,7 +35,9 @@
     "role": "Développeur Front-end",
     "description": "<p><strong>Refonte UI/UX et optimisation de conversion pour Belles Demeures (Groupe SeLoger).</strong></p><p>Modernisation globale du site d'immobilier de luxe axée sur trois piliers : la refonte du design aux standards du secteur haut de gamme, l'intégration de cartes interactives ultra-performantes (Leaflet), et l'optimisation des parcours de conversion sur les pages listes. Un travail de fond sur la web performance pour associer visuels HD, cartographie et chargement instantané.</p>",
     "link": "https://www.bellesdemeures.com/",
-    "visual": "./images/belles-demeures.webp"
+    "visual": "./images/belles-demeures.webp",
+    "visualWidth": 800,
+    "visualHeight": 493
   },
   {
     "title": "Acadomia",
@@ -37,6 +45,8 @@
     "role": "Développeur Front-end",
     "description": "<p><strong>Développement de parcours d'acquisition dynamiques et maintenance web pour Acadomia.</strong></p><p>Conception de landing pages complexes dotées de parcours décisionnels à choix multiples pour orienter efficacement les utilisateurs vers les offres de cours adaptées. Développement front-end axé sur la conversion de leads, couplé à la maintenance technique et l'évolution de la plateforme globale (WordPress).</p>",
     "link": "https://www.acadomia.fr/",
-    "visual": "./images/acadomia.webp"
+    "visual": "./images/acadomia.webp",
+    "visualWidth": 400,
+    "visualHeight": 400
   }
 ]

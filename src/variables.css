@@ -3,6 +3,6 @@
     --paper: #fcfcfa;
     --muted: #72716d;
     --line: #deded9;
-    --heading: "Barlow Condensed", sans-serif;
-    --body: "Spectral", serif;
+    --heading: "Arial Narrow", "Aptos Narrow", "Segoe UI", Arial, sans-serif;
+    --body: Georgia, "Times New Roman", serif;
 }

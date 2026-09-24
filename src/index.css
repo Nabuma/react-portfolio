@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-    --font-heading: "Barlow Condensed", sans-serif;
-    --font-body: "Spectral", serif;
+    --font-heading: "Arial Narrow", "Aptos Narrow", "Segoe UI", Arial, sans-serif;
+    --font-body: Georgia, "Times New Roman", serif;
     --color-ink: #1b1b1a;
     --color-paper: #fcfcfa;
     --color-muted: #72716d;

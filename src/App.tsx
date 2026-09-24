@@ -47,7 +47,7 @@ function App() {
         </nav>
         <div className="basis-full sm:basis-auto" role="group" aria-label={t.switchLanguage}>
           {(['fr', 'en', 'ko'] as Locale[]).map((language) => (
-            <button className={`mr-3 text-sm font-bold uppercase ${locale === language ? 'underline' : 'text-muted'}`} type="button" key={language} onClick={() => setLocale(language)} aria-pressed={locale === language}>
+            <button className={`mr-3 cursor-pointer text-sm font-bold uppercase ${locale === language ? 'underline' : 'text-muted'}`} type="button" key={language} onClick={() => setLocale(language)} aria-pressed={locale === language}>
               {translations[language].languageName}
             </button>
           ))}

@@ -14,7 +14,7 @@ function Project({ title, categorie, role, description, link, visual, visualWidt
     <article className="border-b border-line py-10 sm:py-12">
       <div className="grid items-start gap-6 sm:grid-cols-[minmax(16rem,1fr)_minmax(0,1.4fr)_auto] sm:gap-10">
         <div>
-          <h3 className="font-heading text-[2.8rem] leading-none font-medium">{title}</h3>
+          <h3 className="font-heading text-[2.4rem] leading-none font-medium sm:text-[2.8rem]">{title}</h3>
           <p className="mt-2 text-sm leading-5 text-muted">{categorie}</p>
           <p className="mt-1 text-sm leading-5 text-muted">{role}</p>
           <figure className="mt-5 w-full max-w-full overflow-hidden border border-line bg-white p-1 sm:mt-6 sm:max-w-[16rem]">
@@ -39,6 +39,10 @@ function App() {
         <p className="text-[1.5rem] leading-none text-muted">Senior front-end developer
           
         </p>
+        <p className="flex items-center gap-2 text-sm leading-5 text-muted whitespace-nowrap" role="status">
+          <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
+          Ouvert aux opportunités
+        </p>
         <nav className="basis-full sm:ml-auto sm:basis-auto" aria-label="Réseaux et contact">
           <ul className="flex gap-7 pt-4 font-heading text-sm font-bold tracking-[0.04em] uppercase sm:pt-0">
           <li><a aria-label="LinkedIn (ouvre dans un nouvel onglet)" className="transition-colors hover:text-muted focus-visible:text-muted" href="https://www.linkedin.com/in/arnaud-chapplain-6a04581a0/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
@@ -49,8 +53,8 @@ function App() {
       </header>
       <main id="main-content">
       <section className="max-w-[68rem] py-32 sm:py-48" aria-labelledby="intro-title">
-        <h2 id="intro-title" className="font-heading text-[clamp(3.6rem,7vw,7.2rem)] leading-[0.95] font-normal">Bienvenue sur mon portfolio</h2>
-        <p className="mt-7 max-w-[56rem] text-xl">Je suis Arnaud CHAPPLAIN, développeur Front-end passionné par la création d'interfaces utilisateur modernes et réactives.</p>
+        <h2 id="intro-title" className="font-heading text-[3.4rem] leading-[0.95] font-normal sm:text-[5rem] lg:text-[7.2rem]">Je conçois des interfaces rapides, accessibles et durables.</h2>
+        <p className="mt-7 max-w-[56rem] text-xl">Développeur front-end senior, j'interviens sur des produits web complexes pour clarifier l'expérience, améliorer les performances et rendre chaque interface plus inclusive.</p>
       </section>
       <section id="projects" tabIndex={-1} className="border-t border-line" aria-labelledby="projects-title">
         <h2 id="projects-title" className="sr-only">Projets</h2>
@@ -59,7 +63,7 @@ function App() {
         ))}
       </section>
       <section className="border-b border-line py-28 sm:py-40" aria-labelledby="expertise-title">
-        <h2 id="expertise-title" className="font-heading text-[clamp(3.6rem,7vw,7.2rem)] leading-[0.95] font-normal">Mon expertise</h2>
+        <h2 id="expertise-title" className="font-heading text-[3.4rem] leading-[0.95] font-normal sm:text-[5rem] lg:text-[7.2rem]">Mon expertise</h2>
         <div className="mt-14 border-t border-line sm:mt-16">
           {expertiseAreas.map((area, index) => (
             <article className="grid gap-6 border-b border-line py-10 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-10 sm:py-12" key={area.title}>
@@ -91,7 +95,7 @@ function App() {
         </div>
       </section>
       <section className="py-28 sm:py-40" aria-labelledby="contact-title">
-        <h2 id="contact-title" className="font-heading text-[clamp(3.6rem,7vw,7.2rem)] leading-[0.95] font-normal">Contactez-moi</h2>
+        <h2 id="contact-title" className="font-heading text-[3.4rem] leading-[0.95] font-normal sm:text-[5rem] lg:text-[7.2rem]">Contactez-moi</h2>
         <p className="mt-5">Vous pouvez me contacter via <a aria-label="LinkedIn (ouvre dans un nouvel onglet)" className="transition-colors hover:text-muted focus-visible:text-muted underline" href="https://www.linkedin.com/in/arnaud-chapplain-6a04581a0/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, <a aria-label="GitHub (ouvre dans un nouvel onglet)" className="transition-colors hover:text-muted focus-visible:text-muted underline" href="https://github.com/Nabuma" target="_blank" rel="noopener noreferrer">GitHub</a> ou par <a className="transition-colors hover:text-muted focus-visible:text-muted underline" href="mailto:arnaud.chapplain@gmail.com">mail</a>.</p>
       </section>
       </main>

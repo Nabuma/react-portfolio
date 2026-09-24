@@ -40,7 +40,7 @@ function App() {
             {t.openToOpportunities}
           </p>
         </div>
-        <div className="basis-full md:ml-auto md:flex md:basis-auto md:flex-col md:items-end md:gap-3 xl:flex-row xl:items-baseline">
+        <div className="basis-full md:ml-auto md:flex md:basis-auto md:flex-col md:items-end md:gap-5 xl:flex-row xl:items-baseline xl:gap-7">
           <nav aria-label={t.socialAndContact}>
             <ul className="flex gap-7 pt-4 font-heading text-sm font-bold tracking-[0.04em] uppercase md:pt-0">
             <li><a aria-label={`LinkedIn ${t.opensInNewTab}`} className="transition-colors hover:text-muted focus-visible:text-muted" href="https://www.linkedin.com/in/arnaud-chapplain-6a04581a0/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
@@ -50,8 +50,8 @@ function App() {
           </nav>
           <div role="group" aria-label={t.switchLanguage}>
             {(['fr', 'en', 'ko'] as Locale[]).map((language) => (
-              <button className={`mr-3 cursor-pointer text-lg leading-none ${locale === language ? 'opacity-100' : 'opacity-50'}`} type="button" key={language} onClick={() => setLocale(language)} aria-label={translations[language].languageName} title={translations[language].languageName} aria-pressed={locale === language}>
-                {language === 'fr' ? '🇫🇷' : language === 'en' ? '🇬🇧' : '🇰🇷'}
+              <button className={`language-button mr-3 cursor-pointer text-sm font-bold tracking-[0.04em] uppercase ${locale === language ? 'opacity-100' : 'opacity-50'}`} type="button" key={language} onClick={() => setLocale(language)} aria-label={translations[language].languageName} title={translations[language].languageName} aria-pressed={locale === language}>
+                {language.toUpperCase()}
               </button>
             ))}
           </div>

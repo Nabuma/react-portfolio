@@ -1,0 +1,20 @@
+@import url('./fonts.css');
+@import 'tailwindcss';
+
+@theme {
+    --font-heading: "Barlow Condensed", sans-serif;
+    --font-body: "Spectral", serif;
+    --color-ink: #1b1b1a;
+    --color-paper: #fcfcfa;
+    --color-muted: #72716d;
+    --color-line: #deded9;
+}
+
+body {
+    @apply bg-paper font-body text-[16px] leading-relaxed text-ink;
+}
+
+a:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 4px;
+}

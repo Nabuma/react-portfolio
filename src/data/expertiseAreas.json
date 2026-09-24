@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Architecture & Web Performance",
+    "points": [
+      ["Décommissionnement du legacy :", "Migration de socles monolithiques ou vieillissants, notamment de jQuery vers ES6+ moderne."],
+      ["Optimisation des performances :", "Réduction du poids des bundles, optimisation des ressources et maîtrise des métriques Core Web Vitals sur des plateformes à très fort trafic comme Le Monde et Darty."],
+      ["Scalabilité & SEO :", "Conception d’interfaces légères et rapides garantissant une excellente indexation et un temps de chargement minimal."]
+    ]
+  },
+  {
+    "title": "Design Systems & Accessibilité",
+    "points": [
+      ["Design Systems :", "Création, intégration et déploiement de bibliothèques de composants réutilisables, de Figma vers Tailwind CSS, FreeMarker et HTML-CSS."],
+      ["Accessibilité numérique :", "Expertise et mise en conformité stricte aux normes RGAA pour les services publics et grandes marques, dont Impôts et Darty."],
+      ["Rendu UI/UX sur-mesure :", "Intégration de haut niveau, soin des micro-interactions et précision au pixel près pour des secteurs exigeants comme Belles Demeures."]
+    ]
+  },
+  {
+    "title": "UX Avancée & Algorithmique Front-End",
+    "points": [
+      ["Interfaces cartographiques :", "Intégration et optimisation de cartes interactives dynamiques à forte densité de données avec Leaflet pour SeLoger."],
+      ["Parcours complexes & CRO :", "Développement d’arborescences décisionnelles à choix multiples et de funnels d’achat optimisés pour la conversion, notamment pour Acadomia et Darty."],
+      ["Monétisation :", "Intégration transparente et performante des formats publicitaires et paywalls sans altération de l’expérience utilisateur pour Le Monde."]
+    ]
+  },
+  {
+    "title": "Leadership Technique, Mentoring & Process",
+    "points": [
+      ["Acculturation & Mentoring :", "Formation et accompagnement des équipes back-end et front-end vers des architectures basées sur les composants réutilisables et le Design System."],
+      ["Audits & Quality Assurance :", "Débogage complexe, refactoring de code délaissé et mise en place de bonnes pratiques de développement."],
+      ["Collaboration pluridisciplinaire :", "Travail en synergie étroite avec les équipes Product, Design sur Figma et Back-End."]
+    ]
+  }
+]

@@ -24,7 +24,7 @@
     },
     "screenshots": [
       {
-        "src": "./images/darty-screen.png",
+        "src": "./images/darty-screen.webp",
         "width": 1905,
         "height": 1865
       }
@@ -55,7 +55,7 @@
     },
     "screenshots": [
       {
-        "src": "./images/gouv-screen.png",
+        "src": "./images/gouv-screen.webp",
         "width": 480,
         "height": 435
       }
@@ -86,7 +86,7 @@
     },
     "screenshots": [
       {
-        "src": "./images/le-monde-screen.png",
+        "src": "./images/le-monde-screen.webp",
         "width": 480,
         "height": 480
       }
@@ -117,7 +117,7 @@
     },
     "screenshots": [
       {
-        "src": "./images/belles-demeures-screen.png",
+        "src": "./images/belles-demeures-screen.webp",
         "width": 480,
         "height": 296
       }
@@ -148,7 +148,7 @@
     },
     "screenshots": [
       {
-        "src": "./images/acadomia-screen.png",
+        "src": "./images/acadomia-screen.webp",
         "width": 400,
         "height": 400
       }

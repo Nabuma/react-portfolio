@@ -1,10 +1,11 @@
 import expertiseAreas from './data/expertiseAreas.json';
 import projects from './data/projects.json';
 import { type Locale, translations, useTranslation } from './i18n';
+import PortfolioAlternative from './pages/PortfolioAlternative';
 
 type ProjectData = (typeof projects)[number];
 
-function Project({ title, categorie, role, description, link, visual, visualWidth, visualHeight, locale, previewLabel, viewProjectLabel, opensInNewTab }: ProjectData & { locale: Locale; previewLabel: string; viewProjectLabel: string; opensInNewTab: string }) {
+function Project({ title, categorie, role, description, link, visual, locale, previewLabel, viewProjectLabel, opensInNewTab }: ProjectData & { locale: Locale; previewLabel: string; viewProjectLabel: string; opensInNewTab: string }) {
   return (
     <article className="border-b border-line py-10 sm:py-12">
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(16rem,1fr)_minmax(0,1.4fr)_auto] lg:gap-10">
@@ -13,7 +14,7 @@ function Project({ title, categorie, role, description, link, visual, visualWidt
           <p className="mt-2 text-sm leading-5 text-muted">{categorie[locale]}</p>
           <p className="mt-1 text-sm leading-5 text-muted">{role[locale]}</p>
           <figure className="mt-5 w-full max-w-full overflow-hidden border border-line bg-white p-1 sm:mt-6 sm:max-w-[16rem]">
-            <img src={visual} alt={`${previewLabel} ${title}`} width={visualWidth} height={visualHeight} sizes="(min-width: 640px) 16rem, 100vw" className="block h-auto max-w-full grayscale contrast-125" loading="lazy" decoding="async" />
+            <img src={visual.src} alt={`${previewLabel} ${title}`} width={visual.width} height={visual.height} sizes="(min-width: 640px) 16rem, 100vw" className="block h-auto max-w-full grayscale contrast-125" loading="lazy" decoding="async" />
           </figure>
         </div>
         <div className="max-w-[68ch]">
@@ -27,6 +28,10 @@ function Project({ title, categorie, role, description, link, visual, visualWidt
 
 function App() {
   const { locale, setLocale, t } = useTranslation();
+
+  if (new URLSearchParams(window.location.search).has('alternative')) {
+    return <PortfolioAlternative />;
+  }
 
   return (
     <div className="mx-auto w-[min(112rem,calc(100%-3.2rem))] sm:w-[min(112rem,calc(100%-4.8rem))]">

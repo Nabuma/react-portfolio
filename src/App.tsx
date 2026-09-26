@@ -46,16 +46,15 @@ function App() {
           </p>
         </div>
         <div className="basis-full md:ml-auto md:flex md:basis-auto md:flex-col md:items-end md:gap-5 xl:flex-row xl:items-baseline xl:gap-7">
-          <nav aria-label={t.socialAndContact}>
+          <nav aria-label={t.projects}>
             <ul className="flex gap-7 pt-4 font-heading text-sm font-bold tracking-[0.04em] uppercase md:pt-0">
-            <li><a aria-label={`LinkedIn ${t.opensInNewTab}`} className="transition-colors hover:text-muted focus-visible:text-muted" href="https://www.linkedin.com/in/arnaud-chapplain-6a04581a0/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a aria-label={`GitHub ${t.opensInNewTab}`} className="transition-colors hover:text-muted focus-visible:text-muted" href="https://github.com/Nabuma" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            <li><a className="transition-colors hover:text-muted focus-visible:text-muted" href="mailto:arnaud.chapplain@gmail.com">Mail</a></li>
+            <li><a className="transition-colors hover:text-muted focus-visible:text-muted" href="#projects">{t.projects}</a></li>
+            <li><a className="transition-colors hover:text-muted focus-visible:text-muted" href="#contact">{t.contact}</a></li>
             </ul>
           </nav>
           <div role="group" aria-label={t.switchLanguage}>
             {(['fr', 'en', 'ko'] as Locale[]).map((language) => (
-              <button className={`language-button mr-3 cursor-pointer text-sm font-bold tracking-[0.04em] uppercase ${locale === language ? 'opacity-100' : 'opacity-50'}`} type="button" key={language} onClick={() => setLocale(language)} aria-label={translations[language].languageName} title={translations[language].languageName} aria-pressed={locale === language}>
+              <button className={`language-button mr-3 cursor-pointer text-sm font-bold tracking-[0.04em] uppercase ${locale === language ? 'text-ink underline underline-offset-4' : 'text-muted'}`} type="button" key={language} onClick={() => setLocale(language)} aria-label={translations[language].languageName} title={translations[language].languageName} aria-pressed={locale === language}>
                 {language.toUpperCase()}
               </button>
             ))}
@@ -108,7 +107,7 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="py-28 sm:py-40" aria-labelledby="contact-title">
+      <section id="contact" className="py-28 sm:py-40" aria-labelledby="contact-title">
         <h2 id="contact-title" className="font-heading text-[3.4rem] leading-[0.95] font-normal sm:text-[5rem] lg:text-[7.2rem]">{t.contact}</h2>
         <p className="mt-5">{t.contactDescription} <a aria-label={`LinkedIn ${t.opensInNewTab}`} className="transition-colors hover:text-muted focus-visible:text-muted underline" href="https://www.linkedin.com/in/arnaud-chapplain-6a04581a0/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, <a aria-label={`GitHub ${t.opensInNewTab}`} className="transition-colors hover:text-muted focus-visible:text-muted underline" href="https://github.com/Nabuma" target="_blank" rel="noopener noreferrer">GitHub</a> {t.orBy} <a className="transition-colors hover:text-muted focus-visible:text-muted underline" href="mailto:arnaud.chapplain@gmail.com">mail</a>.</p>
       </section>

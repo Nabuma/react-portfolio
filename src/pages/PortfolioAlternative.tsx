@@ -7,14 +7,14 @@ const copy = {
     heroDescription: 'J’aide les équipes produit à transformer des interfaces complexes en expériences rapides, accessibles et faciles à faire évoluer.',
     selectedWork: 'Projet principal',
     proof: 'Ce que je construis',
-    stats: [['Produits publics', '05'], ['Expertise', 'RGAA'], ['Spécialité', 'Web']],
+    tags: ['Front-end senior', 'Performance', 'Accessibilité', 'Design Systems', 'RGAA', 'Web Vitals', 'Mentorat', 'UX produit'],
     proofItems: [
       ['Performance', 'Web Vitals, bundles et parcours critiques sur des produits à fort trafic.'],
       ['Accessibilité', 'Interfaces conformes RGAA, testées avec une attention portée aux vrais usages.'],
       ['Systèmes', 'Composants réutilisables et pratiques partagées entre design, front-end et back-end.'],
     ],
-    viewLive: 'Voir le site public',
-    allWork: 'Autres projets',
+    viewLive: 'Voir le site',
+    allWork: 'Projets',
     contact: 'Parlons d’un produit exigeant.',
     contactDescription: 'Disponible pour une mission où le front-end doit clarifier l’expérience autant que la technique.',
     contactAction: 'Me contacter',
@@ -27,14 +27,14 @@ const copy = {
     heroDescription: 'I help product teams turn complex interfaces into fast, accessible experiences that are easier to evolve.',
     selectedWork: 'Featured project',
     proof: 'What I build',
-    stats: [['Public products', '05'], ['Expertise', 'RGAA'], ['Speciality', 'Web']],
+    tags: ['Senior front-end', 'Performance', 'Accessibility', 'Design Systems', 'RGAA', 'Web Vitals', 'Mentoring', 'Product UX'],
     proofItems: [
       ['Performance', 'Web Vitals, bundles and critical journeys for high-traffic products.'],
       ['Accessibility', 'RGAA-compliant interfaces shaped around real assistive-technology use.'],
       ['Systems', 'Reusable components and shared practices across design, front-end and back-end.'],
     ],
-    viewLive: 'Visit the live site',
-    allWork: 'More projects',
+    viewLive: 'Visit site',
+    allWork: 'Projects',
     contact: 'Let’s discuss a demanding product.',
     contactDescription: 'Available for work where front-end needs to clarify both the experience and the technology.',
     contactAction: 'Start a conversation',
@@ -47,14 +47,14 @@ const copy = {
     heroDescription: '복잡한 인터페이스를 빠르고 접근성이 뛰어나며 발전시키기 쉬운 경험으로 바꾸도록 제품 팀을 돕습니다.',
     selectedWork: '대표 프로젝트',
     proof: '제가 만드는 것',
-    stats: [['공개 제품', '05'], ['전문 분야', 'RGAA'], ['전문 영역', 'Web']],
+    tags: ['시니어 프론트엔드', '성능', '접근성', '디자인 시스템', 'RGAA', 'Web Vitals', '멘토링', '제품 UX'],
     proofItems: [
       ['성능', '트래픽이 많은 제품의 Web Vitals, 번들 및 핵심 사용자 여정.'],
       ['접근성', '실제 보조 기술 사용을 고려한 RGAA 준수 인터페이스.'],
       ['시스템', '디자인, 프론트엔드, 백엔드가 함께 사용하는 재사용 가능한 컴포넌트.'],
     ],
-    viewLive: '공개 사이트 보기',
-    allWork: '다른 프로젝트',
+    viewLive: '사이트 보기',
+    allWork: '프로젝트',
     contact: '도전적인 제품에 대해 이야기해 보세요.',
     contactDescription: '경험과 기술을 함께 명확하게 만드는 프론트엔드 업무를 찾고 있습니다.',
     contactAction: '연락하기',
@@ -68,7 +68,7 @@ function LanguageSwitch({ locale, setLocale }: { locale: Locale; setLocale: (loc
   return (
     <div className="flex items-center gap-4" role="group" aria-label={copy[locale].languageName}>
       {(['fr', 'en', 'ko'] as Locale[]).map((language) => (
-        <button className={`cursor-pointer text-xs font-bold tracking-[0.08em] uppercase ${locale === language ? 'opacity-100' : 'opacity-40'}`} type="button" key={language} onClick={() => setLocale(language)} aria-label={translations[language].languageName} aria-pressed={locale === language}>
+        <button className={`cursor-pointer text-xs font-bold tracking-[0.08em] uppercase ${locale === language ? 'text-ink underline underline-offset-4' : 'text-muted'}`} type="button" key={language} onClick={() => setLocale(language)} aria-label={translations[language].languageName} aria-pressed={locale === language}>
           {language.toUpperCase()}
         </button>
       ))}
@@ -104,14 +104,13 @@ function PortfolioAlternative() {
             <p className="mt-8 max-w-[38rem] text-xl leading-8">{text.heroDescription}</p>
             <a className="mt-9 inline-block border-b-2 border-ink pb-1 font-heading text-sm font-bold tracking-[0.06em] uppercase" href="#work">{text.allWork} <span aria-hidden="true">↓</span></a>
           </div>
-          <dl className="grid self-end border-t border-line pt-5 sm:grid-cols-3 lg:block lg:border-t-0 lg:border-l lg:pl-8">
-            {text.stats.map(([label, value], index) => (
-              <div className={`${index === 0 ? 'border-b border-line pb-5 lg:pb-7' : index === 1 ? 'border-b border-line py-5 lg:py-7' : 'pt-5 lg:pt-7'}`} key={label}>
-                <dt className="text-sm text-muted">{label}</dt>
-                <dd className="mt-2 font-heading text-5xl leading-none">{value}</dd>
-              </div>
-            ))}
-          </dl>
+          <div className="self-end border-t border-line pt-5 lg:border-t-0 lg:border-l lg:pl-8" aria-label={text.proof}>
+            <div className="flex max-w-[26rem] flex-wrap items-baseline gap-x-3 gap-y-2">
+              {text.tags.map((tag, index) => (
+                <span className={`${index % 4 === 0 ? 'text-3xl' : index % 3 === 0 ? 'text-2xl' : 'text-lg'} font-heading leading-tight ${index % 2 === 0 ? 'font-medium' : 'text-muted'}`} key={tag}>{tag}</span>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section id="work" className="border-b border-line py-20 sm:py-28" aria-labelledby="featured-title">
@@ -158,18 +157,19 @@ function PortfolioAlternative() {
           </div>
           <div className="mt-10 border-t border-line">
             {supportingProjects.map((project, index) => (
-              <article className="grid gap-5 border-b border-line py-8 sm:grid-cols-[4rem_minmax(0,1fr)_minmax(12rem,0.5fr)_auto] sm:items-start sm:gap-6" key={project.title}>
+              <article className="grid gap-5 border-b border-line py-8 sm:grid-cols-[4rem_minmax(0,1fr)_minmax(8rem,auto)] sm:items-start sm:gap-8" key={project.title}>
                 <p className="font-heading text-sm text-muted">0{index + 2}</p>
-                <div>
-                  <div className="mb-5 max-w-[22rem] overflow-hidden border border-line bg-white p-1">
+                <div className="grid gap-8 md:grid-cols-[minmax(14rem,0.8fr)_minmax(0,1.2fr)] md:items-start">
+                  <div className="max-w-[22rem] overflow-hidden border border-line bg-white p-1 md:max-w-none">
                     <img className="block h-auto w-full" src={project.screenshots[0]?.src ?? project.visual.src} alt={`${text.preview} ${project.title}`} width={project.screenshots[0]?.width ?? project.visual.width} height={project.screenshots[0]?.height ?? project.visual.height} loading="lazy" />
                   </div>
-                  <h3 className="font-heading text-2xl font-medium">{project.title}</h3>
-                  <p className="mt-2 text-sm text-muted">{project.role[locale]}</p>
-                  <div className="mt-4 max-w-[60ch] text-base leading-7" dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
+                  <div>
+                    <h3 className="font-heading text-2xl font-medium">{project.title}</h3>
+                    <p className="mt-2 text-sm text-muted">{project.categorie[locale]} / {project.role[locale]}</p>
+                    <div className="mt-4 max-w-[60ch] text-base leading-7" dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
+                  </div>
                 </div>
-                <p className="text-sm text-muted">{project.categorie[locale]}</p>
-                <a className="w-fit border-b border-current pb-1 font-heading text-sm font-bold tracking-[0.04em] uppercase" href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`${text.viewLive} ${project.title} ${text.opensInNewTab}`}>{text.viewLive} ↗</a>
+                <a className="w-fit self-start border-b border-current pb-1 font-heading text-sm font-bold tracking-[0.04em] uppercase" href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`${text.viewLive} ${project.title} ${text.opensInNewTab}`}>{text.viewLive} ↗</a>
               </article>
             ))}
           </div>
@@ -180,6 +180,10 @@ function PortfolioAlternative() {
           <div className="lg:pt-2">
             <p className="max-w-[32ch] text-lg leading-7">{text.contactDescription}</p>
             <a className="mt-8 inline-block border-b-2 border-ink pb-1 font-heading text-sm font-bold tracking-[0.06em] uppercase" href="mailto:arnaud.chapplain@gmail.com">{text.contactAction} ↗</a>
+            <nav className="mt-10 flex flex-wrap gap-x-6 gap-y-3 font-heading text-sm font-bold tracking-[0.04em] uppercase" aria-label={t.socialAndContact}>
+              <a className="border-b border-current pb-1 transition-colors hover:text-muted focus-visible:text-muted" href="https://www.linkedin.com/in/arnaud-chapplain-6a04581a0/" target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn ${t.opensInNewTab}`}>LinkedIn ↗</a>
+              <a className="border-b border-current pb-1 transition-colors hover:text-muted focus-visible:text-muted" href="https://github.com/Nabuma" target="_blank" rel="noopener noreferrer" aria-label={`GitHub ${t.opensInNewTab}`}>GitHub ↗</a>
+            </nav>
           </div>
         </section>
       </main>

@@ -1,133 +1,87 @@
-# Arnaud Chapplain - Portfolio
+# Arnaud Chapplain – Portfolio
 
-Personal portfolio for Arnaud Chapplain, senior front-end developer. The site presents selected projects, expertise in web performance and accessibility, and contact links.
+Personal portfolio of Arnaud Chapplain, senior front-end developer specialized in **web performance**, **accessibility (RGAA / WCAG)** and **design systems**.
 
-It is built as a small, static React application with Vite and TypeScript. The interface is French by default and can be switched between French, English, and Korean.
+**Live site:** https://www.arnaud-chapplain.com
 
-## Highlights
+![Portfolio screenshot](docs/screenshot.png)
 
-- French default language with English and Korean translations
-- Language preference persisted in `localStorage`
-- Semantic HTML and keyboard-accessible navigation
-- Responsive layout for mobile and desktop
-- Project and expertise content stored in JSON data files
-- WebP project imagery with an optimization script powered by Sharp
-- Performance-focused implementation targeting a Lighthouse score of 100
-- ESLint and Stylelint checks
+## Goals
+
+The portfolio is also a technical proof of what it describes. It is built to be:
+
+- **Fast**: small bundle, optimized images, no unnecessary network requests
+- **Accessible**: semantic HTML, keyboard navigation, visible focus states
+- **Multilingual**: French (default), English and Korean
+- **Easy to maintain**: content lives in data files, not in components
 
 ## Tech stack
 
-- React 19
-- TypeScript
-- Vite
-- Tailwind CSS 4
-- Sharp for WebP image optimization
-- ESLint and Stylelint
+| Area | Choice |
+| --- | --- |
+| UI | React 19, TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS 4 + CSS design tokens (`variables.css`) |
+| Images | WebP, optimized with Sharp |
+| Quality | ESLint, Stylelint, strict TypeScript build |
+| Hosting | Vercel (any static host works) |
 
-## Requirements
+## Key decisions
 
-- Node.js 20 or newer recommended
-- npm
+- **Content separated from UI.** Projects and expertise areas are stored in JSON files (`src/data/`), each translatable value having `fr`, `en` and `ko` fields. Adding a project or a language does not touch the components.
+- **Lightweight i18n.** Locale state and interface strings live in `src/i18n.ts`. The choice is persisted in `localStorage` and the `lang` attribute of the document is updated for assistive technologies.
+- **Design tokens.** Colors, spacing and typography are defined once in `variables.css` and consumed by the styles, which keeps the visual language consistent.
+- **Image pipeline.** Source images are converted to WebP at 70% quality by a script (`npm run images:convert`). Images have explicit dimensions to prevent layout shift, and those below the first viewport are lazy-loaded.
+- **Accessibility by default.** Landmarks, heading hierarchy, labelled controls, keyboard-accessible navigation and focus styles.
 
-## Installation
+## Performance and accessibility
+
+Audit results (Lighthouse, mobile, production build):
+
+| Performance | Accessibility | Best Practices | SEO |
+| --- | --- | --- | --- |
+| _to fill_ | _to fill_ | _to fill_ | _to fill_ |
+
+To reproduce the measurement:
+
+1. `npm run build`
+2. `npm run preview`
+3. Open the preview URL in Chrome, then run Lighthouse from DevTools (mobile mode, clean profile without extensions).
+
+Scores vary with browser version, device emulation and network. Always measure the production build, never the dev server.
+
+## Trade-offs and roadmap
+
+The site is a client-side rendered single-page application. This keeps the code simple and the bundle small, but content is not present in the initial HTML. Planned improvements:
+
+- [ ] Prerender pages at build time so that crawlers and social previews get the full content
+- [ ] Automated Lighthouse and axe checks in CI
+- [ ] Unit and accessibility tests for the main components
+
+## Getting started
+
+Requirements: Node.js 20+ and npm.
 
 ```bash
 npm install
-```
-
-On Windows PowerShell, use `npm.cmd` if the PowerShell execution policy blocks `npm.ps1`.
-
-## Development
-
-Start the Vite development server:
-
-```bash
 npm run dev
 ```
 
-Then open the local URL shown in the terminal, usually `http://localhost:5173`.
+The dev server is usually available at `http://localhost:5173`.
 
-## Production build
+On Windows PowerShell, use `npm.cmd` if the execution policy blocks `npm.ps1`.
 
-Create a type-checked production build:
+## Scripts
 
-```bash
-npm run build
-```
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
-
-The Lighthouse score should be measured against the preview or deployed production site, not the Vite development server.
-
-## Lighthouse 100 target
-
-The portfolio is designed to target 100 in Lighthouse Performance, Accessibility, Best Practices, and SEO. The main practices supporting that target are:
-
-- lightweight static rendering through Vite
-- responsive images with explicit dimensions to reduce layout shift
-- lazy loading for project images below the first viewport
-- WebP assets and optimized image variants
-- semantic landmarks, headings, focus states, and accessible labels
-- minimal runtime dependencies and no unnecessary network requests
-
-To check the result:
-
-1. Run `npm run build`.
-2. Run `npm run preview`.
-3. Open the preview URL in Chrome.
-4. Open DevTools, select **Lighthouse**, choose the required categories and mobile or desktop mode, then run the audit.
-
-Lighthouse results can vary with browser version, device emulation, extensions, network conditions, and hosting configuration. A score of 100 is therefore a validation target for the deployed build, not a permanent guarantee.
-
-## Translations
-
-Translations are implemented in `src/i18n.ts`.
-
-- `fr` is the default locale.
-- `en` provides the English interface.
-- `ko` provides the Korean interface.
-- The selected locale is stored under the `locale` key in `localStorage`.
-- The document language is updated with the active locale for assistive technologies and browser language handling.
-
-Project translations live in `src/data/projects.json`, and expertise translations live in `src/data/expertiseAreas.json`. Each translatable value has `fr`, `en`, and `ko` fields. Technology and tool names intentionally remain in their standard English form.
-
-## WebP image optimization
-
-Source images are kept in `public/images`. The optimization script reads the configured source WebP files and optimizes them in place at 70% quality:
-
-```bash
-npm run images:convert
-```
-
-On Windows PowerShell:
-
-```powershell
-npm.cmd run images:convert
-```
-
-The script is defined in `src/convert.js` and currently processes:
-
-- `darty.webp`
-- `le-monde.webp`
-- `gouv.webp`
-- `belles-demeures.webp`
-- `acadomia.webp`
-
-Each command replaces the existing image with an optimized file using the same filename. A temporary `.optimized.webp` file is used during processing and is renamed back to the original filename after conversion. If a new image is added, register its filename and target width in the `images` array in `src/convert.js`.
-
-## Code quality commands
-
-```bash
-npm run lint
-npm run lint:css
-npm run format:css
-```
-
-`lint` checks JavaScript and TypeScript. `lint:css` checks CSS ordering and style rules. `format:css` applies the configured Stylelint fixes.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite dev server |
+| `npm run build` | Type-check and create the production build in `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Lint JavaScript and TypeScript |
+| `npm run lint:css` | Lint CSS (ordering and style rules) |
+| `npm run format:css` | Apply the Stylelint fixes |
+| `npm run images:convert` | Optimize project images to WebP |
 
 ## Project structure
 
@@ -136,24 +90,28 @@ src/
   App.tsx                 Main page and language-aware UI
   i18n.ts                 Locale state and interface translations
   data/
-    projects.json         Project content and translations
-    expertiseAreas.json   Expertise content and translations
+    projects.json         Project content (fr / en / ko)
+    expertiseAreas.json   Expertise content (fr / en / ko)
   pages/                  Page-level components
   convert.js              WebP optimization script
   index.css               Global styles and Tailwind entry point
   variables.css           Design tokens
-  reset.css               Base reset styles
-public/images/            Project imagery and optimized WebP files
+  reset.css               Base reset
+public/images/            Project imagery (optimized WebP)
 ```
+
+## Adding content
+
+- **A project or expertise area:** edit `src/data/projects.json` or `src/data/expertiseAreas.json` and provide the `fr`, `en` and `ko` values. Technology names stay in their standard English form.
+- **An image:** place it in `public/images`, register its filename and target width in the `images` array of `src/convert.js`, then run `npm run images:convert`.
+- **A language:** add the locale in `src/i18n.ts` and the matching fields in the data files.
 
 ## Deployment
 
-The project produces a static `dist` directory and can be deployed to any static hosting provider, including GitHub Pages, Netlify, Vercel, Cloudflare Pages, or a traditional web server.
+`npm run build` produces a static `dist/` directory that can be served by any static host (Vercel, Netlify, Cloudflare Pages, GitHub Pages). Configure the host to serve `index.html` for the root path, then audit the deployed site with Lighthouse.
 
-For deployment, run:
+## Contact
 
-```bash
-npm run build
-```
-
-Publish the generated `dist` directory. Configure the host to serve `index.html` for the root path and make sure the final site is tested with Lighthouse after deployment.
+- Portfolio: https://www.arnaud-chapplain.com
+- LinkedIn: https://www.linkedin.com/in/arnaudchapplain-6a04581a0
+- Email: arnaud.chapplain@gmail.com

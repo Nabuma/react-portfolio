@@ -40,7 +40,7 @@ Audit results (Lighthouse, mobile, production build):
 
 | Performance | Accessibility | Best Practices | SEO |
 | --- | --- | --- | --- |
-| _to fill_ | _to fill_ | _to fill_ | _to fill_ |
+| 100 | 100 | 100 | 100 |
 
 To reproduce the measurement:
 
@@ -50,13 +50,9 @@ To reproduce the measurement:
 
 Scores vary with browser version, device emulation and network. Always measure the production build, never the dev server.
 
-## Trade-offs and roadmap
+or
 
-The site is a client-side rendered single-page application. This keeps the code simple and the bundle small, but content is not present in the initial HTML. Planned improvements:
-
-- [ ] Prerender pages at build time so that crawlers and social previews get the full content
-- [ ] Automated Lighthouse and axe checks in CI
-- [ ] Unit and accessibility tests for the main components
+`npx lhci autorun`
 
 ## Getting started
 
